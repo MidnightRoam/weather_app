@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <p class="title">Weather app</p>
+        <div class="weather__card rounded shadow">
+            <form method='POST' class="card__control">
+                {% csrf_token %}
+                <input type="text" name="city" class="card__input rounded" placeholder="Enter city...">
+                <button type="submit" class="btn">Enter</button>
+            </form>
+            <div class="card__detail">
+                <div class="card__left">
+                    <div class="card__city">{{ city }}</div>
+                    <div class="card__temperature">{{ temp|floatformat:"0" }}°C</div>
+                </div>
+                <div class="card__right-top" id="card__right-top">
+                    <img class="weather__icon" id="weather-icon" src="https://openweathermap.org/img/w/{{ icon }}.png" alt="weather-icon">
+                </div>
+                <div class="card__right-bot">
+                    <div class="card__description">{{ description|title }}</div>
+                    <div class="card__date">{{ time }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
