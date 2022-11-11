@@ -11,7 +11,7 @@ class IndexView(View):
 
     def get(self, request, *args, **kwargs):
         PARAMS = {
-            'q': 'Amsterdam',
+            'q': 'Europe',
             'appid': self.appid,
             'units': 'metric'
         }

@@ -5,44 +5,115 @@ weatherIcon = document.querySelector('#weather-icon');
 background = document.querySelector('.container');
 cardBackground = document.querySelector('.weather__card');
 
-array = ['04n.png', '04d.png']
-
-function changeBackground () {
+function brokenClouds(timeDay) {
     // Broken clouds styles
-    if (weatherIcon.src.includes('04n.png') ||
-    weatherIcon.src.includes('04d.png'))  {
+    if (timeDay === 'day') {
         background.style.background = '#7393B3';
-        cardBackground.style.backgroundImage = "url('static/images/broken-clouds.jpg')";
-    // Scattered clouds styles
-    } else if (weatherIcon.src.includes('03n.png') ||
-    weatherIcon.src.includes('03d.png')) {
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/broken-clouds.jpg')";
+    } else {
         background.style.background = '#7393B3';
-        cardBackground.style.backgroundImage = "url('static/images/scattered-clouds.jpg')";
-    // Clear sky styles
-    } else if (weatherIcon.src.includes('01n.png') ||
-    weatherIcon.src.includes('01d.png')) {
-        cardRightTop.style.background = '#FFFF8F';
-        cardRightBot.style.background = '#93C572';
-        background.style.background = '#87CEEB';
-        cardBackground.style.backgroundImage = "url('static/images/clear-sky.jpg')";
-    // Few clouds styles
-    } else if (weatherIcon.src.includes('02n.png') ||
-    weatherIcon.src.includes('02d.png')) {
-        background.style.background = '#87CEEB';
-        cardBackground.style.backgroundImage = "url('static/images/few-clouds.jpg')";
-    // Rain styles
-    } else if (weatherIcon.src.includes('10n.png') ||
-    weatherIcon.src.includes('10d.png')) {
-        background.style.background = '#7393B3';
-        cardBackground.style.backgroundImage = "url('https://www.vmcdn.ca/f/files/via/images/weather/raindrop-umbrella.jpg;w=960')";
-    }
-    // Snow styles
-    else if (weatherIcon.src.includes('13n.png') ||
-    weatherIcon.src.includes('13d.png')) {
-        background.style.background = '#7393B3';
-        cardBackground.style.backgroundImage = "url('static/images/snow.jpg')";
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/broken-clouds.jpg')";
     }
 }
 
-console.log(changeBackground())
+function scatteredClouds(timeDay) {
+    // Scattered clouds styles
+    if (timeDay === 'day') {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/scattered-clouds.jpg')";
+    } else {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/scattered-clouds.jpg')";
+    }
+}
 
+function clearSky(timeDay) {
+    // Clear sky styles
+    if (timeDay === 'day') {
+        cardRightTop.style.background = '#FFFF8F';
+        cardRightBot.style.background = '#93C572';
+        background.style.background = '#87CEEB';
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/clear-sky.jpg')";
+    } else {
+        cardRightBot.style.background = '#6082B6';
+        background.style.background = '#6F8FAF';
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/clear-sky.jpg')";
+    }
+}
+
+function fewClouds(timeDay) {
+    // Few clouds styles
+    if (timeDay === 'day') {
+        background.style.background = '#87CEEB';
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/few-clouds.jpg')";
+    } else {
+        background.style.background = '#87CEEB';
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/few-clouds.jpg')";
+    }
+}
+
+function rainWeather(timeDay) {
+    // Rain styles
+    if (timeDay === 'day') {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/rain.jpg')";
+    } else {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/rain.jpg')";
+    }
+}
+
+function snowWeather(timeDay) {
+    // Snow styles
+    if (timeDay === 'day') {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/day/snow.jpg')";
+    } else {
+        background.style.background = '#7393B3';
+        cardBackground.style.backgroundImage = "url('static/images/weather/night/snow.jpg')";
+    }
+}
+
+
+function changeBackground() {
+    // Changes background styles depends on time of day
+    const day = 'day';
+    const night = 'night';
+
+    if (weatherIcon.src.includes('01d.png')) {
+        return clearSky(day);
+    } else if (weatherIcon.src.includes('01n.png')) {
+        return clearSky(night);
+    }
+
+    if (weatherIcon.src.includes('04d.png')) {
+        return brokenClouds(day);
+    } else if (weatherIcon.src.includes('04n.png')) {
+        return brokenClouds(night);
+    }
+
+    if (weatherIcon.src.includes('03d.png')) {
+        return scatteredClouds(day);
+    } else if (weatherIcon.src.includes('03n.png'))  {
+        return scatteredClouds(night);
+    }
+
+    if (weatherIcon.src.includes('02d.png')) {
+        return fewClouds(day);
+    } else if (weatherIcon.src.includes('02n.png')) {
+        return fewClouds(night);
+    }
+
+    if (weatherIcon.src.includes('10d.png')) {
+        return rainWeather(day);
+    } else if (weatherIcon.src.includes('10n.png')) {
+        return rainWeather(night);
+    }
+
+    if (weatherIcon.src.includes('13d.png')) {
+        return snowWeather(day);
+    } else if (weatherIcon.src.includes('13n.png'))  {
+        return snowWeather(night);
+    }
+}
+console.log(changeBackground())
