@@ -10,17 +10,42 @@ body {
 /* Index page styles */
 .container {
     width: 100%;
-    height: 1077px;
+    height: 969px;
     background: rgb(0,36,15);
     background: linear-gradient(90deg, rgba(0,36,15,0.6558998599439776) 0%, rgba(9,121,37,0.7987570028011204) 35%, rgba(0,255,145,1) 100%);
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+/* iPhone XR adaptive */
+@media screen and (max-width: 414px) {
+    .container {
+        height: 896px;
+    }
+}
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .container {
+        height: 667px;
+    }
+}
+
 
 .title {
     font-size: 5em;
     color: #fff;
+}
+/* iPhone XR adaptive */
+@media screen and (max-width: 414px) {
+    .title {
+        display: none;
+    }
+}
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .title {
+        display: none;
+    }
 }
 
 .weather__card {
@@ -33,6 +58,33 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    border-radius: 0.5;
+}
+/* iPhone XR adaptive */
+@media screen and (max-width: 414px) {
+    .weather__card {
+        width: 414px;
+        height: 896px;
+        background: no-repeat;
+        background-size: 100%;
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ & Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        border-radius: 0;
+    }
+}
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .weather__card {
+        width: 375px;
+        height: 667px;
+        background: no-repeat;
+        background-size: 100%;
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ & Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        border-radius: 0;
+    }
 }
 
 .card__input {
@@ -42,6 +94,15 @@ body {
     padding: 15px;
     width: 80%;
     border: none;
+}
+
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .card__input {
+       width: 75.5%;
+       left: 5.5%;
+       padding: 25px;
+    }
 }
 
 input[type="text"] {
@@ -67,6 +128,15 @@ input[type="text"]::placeholder {
     color: #fff;
 }
 
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .btn{
+        left: 66.7%;
+        padding: 18px;
+        top: 8.1%;
+    }
+}
+
 .btn:hover {
     background: #35B0AB;
 }
@@ -90,9 +160,24 @@ input[type="text"]::placeholder {
     align-items: center;
 }
 
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .card__left {
+       width: 179px;
+       height: 400px;
+    }
+}
+
 .card__city {
     font-size: 3em;
     color: #fff;
+}
+
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .card__city {
+       font-size: 2em;
+    }
 }
 
 .card__temperature {
@@ -110,6 +195,15 @@ input[type="text"]::placeholder {
     flex-direction: column;
 }
 
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .card__right-top {
+       width: 150px;
+       height: 190px;
+       left: 55.3%;
+    }
+}
+
 .card__right-bot {
     width: 210px;
     height: 140px;
@@ -122,6 +216,16 @@ input[type="text"]::placeholder {
     position: absolute;
     top: 50%;
     left: 57.5%;
+}
+
+/* iPhone SE adaptive */
+@media screen and (max-width: 375px) {
+    .card__right-bot {
+       width: 150px;
+       height: 220px;
+       left: 53.9%;
+       top: 45%;
+    }
 }
 
 .card__description {

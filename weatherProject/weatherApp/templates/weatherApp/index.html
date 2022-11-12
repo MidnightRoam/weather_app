@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div class="container">
         <p class="title">Weather app</p>
-        <div class="weather__card rounded shadow">
+        <div class="weather__card shadow">
             <form method='POST' class="card__control">
                 {% csrf_token %}
                 <input type="text" name="city" class="card__input rounded" placeholder="Enter city...">
