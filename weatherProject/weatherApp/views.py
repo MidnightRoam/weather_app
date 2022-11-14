@@ -35,7 +35,7 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         PARAMS = {
-            'q': request.POST['city'],
+            'q': request.POST['city'] if request.POST['city'] != '' else 'Europe',
             'appid': self.appid,
             'units': 'metric'
         }
