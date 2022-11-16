@@ -1,2 +1,2 @@
-# weather_app
-Weather app on Django + vanilla JS
+# Weather App
+Weather app written on Django + vanilla JS
